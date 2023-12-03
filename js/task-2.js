@@ -1,32 +1,39 @@
-class Storage {
-  #items;
+const images = [
+  {
+    url: "https://images.pexels.com/photos/140134/pexels-photo-140134.jpeg?dpr=2&h=750&w=1260",
+    alt: "White and Black Long Fur Cat",
+  },
+  {
+    url: "https://images.pexels.com/photos/213399/pexels-photo-213399.jpeg?dpr=2&h=750&w=1260",
+    alt: "Orange and White Koi Fish Near Yellow Koi Fish",
+  },
+  {
+    url: "https://images.pexels.com/photos/219943/pexels-photo-219943.jpeg?dpr=2&h=750&w=1260",
+    alt: "Group of Horses Running",
+  },
+];
 
+// Отримуємо елемент ul.gallery
+const gallery = document.querySelector('.gallery');
 
-  constructor(initialItems) {
-    this.#items = initialItems;
-  }
+// Створюємо фрагмент для оптимізації додавання елементів в DOM
+const fragment = document.createDocumentFragment();
 
-  getItems() {
-    return this.#items;
-  }
+// Проходимося по масиву images та створюємо для кожного об'єкта елемент li з дочірнім елементом img
+images.forEach(image => {
+  const listItem = document.createElement('li');
+  const imageElement = document.createElement('img');
 
-  addItem(newItem) {
-    this.#items.push(newItem);
-  }
+  // Встановлюємо атрибути для зображення
+  imageElement.src = image.url;
+  imageElement.alt = image.alt;
 
-  removeItem(itemToRemove) {
-    const indexToRemove = this.#items.indexOf(itemToRemove);
-    if (indexToRemove !== -1) {
-      this.#items.splice(indexToRemove, 1);
-    }
-  }
-}
+  // Додаємо зображення в li
+  listItem.appendChild(imageElement);
 
-const storage = new Storage(["Nanitoids", "Prolonger", "Antigravitator"]);
-console.log(storage.getItems()); // ["Nanitoids", "Prolonger", "Antigravitator"]
+  // Додаємо li в фрагмент
+  fragment.appendChild(listItem);
+});
 
-storage.addItem("Droid");
-console.log(storage.getItems()); // ["Nanitoids", "Prolonger", "Antigravitator", "Droid"]
-
-storage.removeItem("Prolonger");
-console.log(storage.getItems()); // ["Nanitoids", "Antigravitator", "Droid"]
+// Додаємо фрагмент (весь список) в ul.gallery за одну операцію
+gallery.appendChild(fragment);

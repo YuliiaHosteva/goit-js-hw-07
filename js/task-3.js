@@ -1,36 +1,16 @@
-class StringBuilder {
-  #value;
+const nameInput = document.getElementById('name-input');
+const nameOutput = document.getElementById('name-output');
 
-  constructor(initialValue) {
-    this.#value = initialValue;
-  }
+// Додаємо обробник події input для інпуту
+nameInput.addEventListener('input', updateGreeting);
 
-  getValue() {
-    return this.#value;
-  }
+function updateGreeting() {
+  // Отримуємо значення з інпуту та очищуємо від пробілів по краях
+  const inputValue = nameInput.value.trim();
 
-  padStart(str) {
-    this.#value = str + this.#value;
-  }
+  // Перевіряємо, чи інпут порожній або містить лише пробіли
+  const outputText = inputValue === '' ? 'Anonymous' : inputValue;
 
-  padEnd(str) {
-    this.#value += str;
-  }
-
-  padBoth(str) {
-    this.padStart(str);
-    this.padEnd(str);
-  }
+  // Оновлюємо текст у спані
+  nameOutput.textContent = outputText;
 }
-
-const builder = new StringBuilder(".");
-console.log(builder.getValue()); // "."
-
-builder.padStart("^");
-console.log(builder.getValue()); // "^."
-
-builder.padEnd("^");
-console.log(builder.getValue()); // "^.^"
-
-builder.padBoth("=");
-console.log(builder.getValue()); // "=^.^="
