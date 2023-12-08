@@ -8,21 +8,69 @@
     <link rel="stylesheet" href="css/common.css" />
     <style>
       .login-form {
-        max-width: 320px;
+        max-width: 408px;
         display: flex;
         flex-direction: column;
+        padding: 24px;
+        align-items: flex-start;
+        gap: 16px;
+        border-radius: 8px;
+        background: #FFF;
       }
 
       .login-form label {
-        margin-bottom: 16px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        color: #2E2F42;
+        font-family: Montserrat;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 1.5;
+        letter-spacing: 0.04em;
       }
 
-      .login-form input,
-      .login-form button {
-        width: 100%;
+      .login-form input {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 360px;
+        height: 40px;
         padding: 4px;
-        font: inherit;
+        font-family: Montserrat;
+      
       }
+
+      .login-form input:hover,
+      .login-form input:focus {
+        border-color: #000000;
+      }
+      
+
+
+      .login-form button {
+        color: #FFF;
+        font-family: Montserrat;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 1.5;
+        letter-spacing: 0.04em;
+        width: 86px;
+        padding: 8px 16px;
+        border-radius: 8px;
+        background: #4E75FF;
+        border: transparent;
+      }
+
+      .login-form button:hover, 
+      .login-form button:focus {
+        background: #6C8CFF;
+        border: transparent;
+      }
+
     </style>
   </head>
   <body>
@@ -37,7 +85,7 @@
         Password
         <input type="password" name="password" />
       </label>
-      <button type="submit">Login</button>
+      <button type="submit">Log in</button>
     </form>
 
     <script src="/js/task-4.js" type="module"></script>
